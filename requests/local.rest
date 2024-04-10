@@ -1,0 +1,25 @@
+POST http://localhost:3003/api/blogs
+content-Type: application/json
+
+{
+    "title": "Health blog",
+    "author": "Juha Kankkunen",
+    "url": "juhaKankkunen.fi",
+    "likes": "10"
+}
+
+###
+
+POST http://localhost:3003/api/blogs
+content-Type: application/json
+
+{
+    "title": "Car blog",
+    "author": "Mika Häkkinen",
+    "url": "mikaHakkinen.com",
+    "likes": "1000"
+}
+
+###
+
+GET http://localhost:3003/api/blogs
