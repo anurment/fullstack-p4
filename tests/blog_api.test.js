@@ -9,7 +9,6 @@ const helper = require('./test_helper')
 
 const Blog = require('../models/blog')
 
-
 describe('when there is initially some blogs saved', () => {
     beforeEach(async () => {
         await Blog.deleteMany({})
@@ -88,7 +87,6 @@ describe('when there is initially some blogs saved', () => {
             .expect(400)
     })
     
-
     test('a blog can be deleted', async () => {
         const blogsAtStart = await helper.blogsInDb()
         const blogToDelete = blogsAtStart[0]
@@ -117,8 +115,6 @@ describe('when there is initially some blogs saved', () => {
 
         assert.strictEqual(response.body.likes, update.likes)
       })
-      
-
 })
 
 after(async () => {

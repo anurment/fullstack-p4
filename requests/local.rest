@@ -22,4 +22,28 @@ content-Type: application/json
 
 ###
 
+POST http://localhost:3003/api/users
+content-Type: application/json
+
+{
+    "username": "mluukkai",
+    "name": "Matti Luukkainen",
+    "password": "salainen"
+}
+
+###
+
+POST http://localhost:3003/api/blogs
+content-Type: application/json
+
+{
+    "title": "Car blog",
+    "author": "Mika Häkkinen",
+    "url": "mikaHakkinen.com",
+    "likes": "1000",
+    "userId": "6634a4aa3755212c0969a1fbr"
+}
+
+###
+
 GET http://localhost:3003/api/blogs
