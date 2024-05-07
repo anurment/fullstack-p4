@@ -38,12 +38,25 @@ content-Type: application/json
 
 {
     "title": "Car blog",
-    "author": "Mika Häkkinen",
+    "author": "Matti Luukkainen",
     "url": "mikaHakkinen.com",
     "likes": "1000",
-    "userId": "6634a4aa3755212c0969a1fbr"
+    "userId": "6634a4aa3755212c0969a1fb"
 }
 
 ###
 
 GET http://localhost:3003/api/blogs
+
+###
+POST http://localhost:3003/api/login
+content-Type: application/json
+
+{
+    "username": "mluukkai",
+    "password": "salainen"
+}
+
+###
+
+

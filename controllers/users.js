@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 const usersRouter = require('express').Router()
 const User = require('../models/user')
 
@@ -20,6 +20,9 @@ const ValidateUserNameAndPw = (username,name, password) => {
 
 usersRouter.post('/', async (request, response) => {
   const { username, name, password } = request.body
+
+  console.log(`username: ${username}`)
+  console.log(`password: ${password}`)
 
   const errorMsg = ValidateUserNameAndPw(username, name, password)
 
@@ -45,7 +48,7 @@ usersRouter.post('/', async (request, response) => {
 })
 
 usersRouter.get('/', async (request, response) => {
-    const allUsers = await User.find({})
+    const allUsers = await User.find({}).populate('blogs')
     response.json(allUsers)
 })
 
