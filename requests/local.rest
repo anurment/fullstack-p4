@@ -1,3 +1,4 @@
+//add blog (not working, missing token/authorization header)
 POST http://localhost:3003/api/blogs
 content-Type: application/json
 
@@ -9,7 +10,7 @@ content-Type: application/json
 }
 
 ###
-
+//add blog (not working, missing token/authorization header)
 POST http://localhost:3003/api/blogs
 content-Type: application/json
 
@@ -21,7 +22,7 @@ content-Type: application/json
 }
 
 ###
-
+//register user mluukkai
 POST http://localhost:3003/api/users
 content-Type: application/json
 
@@ -33,6 +34,38 @@ content-Type: application/json
 
 ###
 
+//login user mluukkai
+POST http://localhost:3003/api/login
+content-Type: application/json
+
+{
+    "username": "mluukkai",
+    "password": "salainen"
+}
+
+###
+//register user testaaja
+POST http://localhost:3003/api/users
+content-Type: application/json
+
+{
+    "username": "testaaja",
+    "name": "Tomi Testaaja",
+    "password": "sekret"
+}
+
+###
+//login user testaaja
+POST http://localhost:3003/api/login
+content-Type: application/json
+
+{
+    "username": "testaaja",
+    "password": "sekret"
+}
+
+###
+//add blog for mluukkai WITHOUT token (not working, missing token/authorization header)
 POST http://localhost:3003/api/blogs
 content-Type: application/json
 
@@ -48,15 +81,42 @@ content-Type: application/json
 
 GET http://localhost:3003/api/blogs
 
+
 ###
-POST http://localhost:3003/api/login
-content-Type: application/json
+//add blog for user mluukkai WITH token
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1sdXVra2FpIiwiaWQiOiI2NjM5ZWY5ODE4YjU3MjIyMmJiMWMyMTAiLCJpYXQiOjE3MTUxNjg2NDB9.02g8AUUF9S0od30l-G1QExOquGW_uYk74btKaf4iasg
 
 {
-    "username": "mluukkai",
-    "password": "salainen"
+    "title": "test blog",
+    "author": "Matti Luukkainen",
+    "url": "mikaHakkinen.com",
+    "likes": "1000"
+    
+}
+
+###
+//add blog for user testaaja WITH token
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RhYWphIiwiaWQiOiI2NjNiMjcyMzg1ZTdjOTdiN2MyMmExZGEiLCJpYXQiOjE3MTUxNjg3Mzh9.T0i4s2q1MPpsQHdB7UFqBKkc3iE0W4mPFPPY0Aam524
+
+{
+    "title": "Tomin blogi",
+    "author": "Tomi testaaja",
+    "url": "tommimakinen.com",
+    "likes": "1000"
+    
 }
 
 ###
 
+//delete user mluukkai's blog with mluukkai's token
+DELETE http://localhost:3003/api/blogs/663b658fc38f07b630037839
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1sdXVra2FpIiwiaWQiOiI2NjM5ZWY5ODE4YjU3MjIyMmJiMWMyMTAiLCJpYXQiOjE3MTUxNjQ4Mzl9.8BMC3o2OQQqArdxDgaeVBRDSJGUObuf09-HZVd34BH4
 
+###
+//delete user testaaja's blog with mluukkai's token
+DELETE http://localhost:3003/api/blogs/663b660ac38f07b630037840
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RhYWphIiwiaWQiOiI2NjNiMjcyMzg1ZTdjOTdiN2MyMmExZGEiLCJpYXQiOjE3MTUxNjg3Mzh9.T0i4s2q1MPpsQHdB7UFqBKkc3iE0W4mPFPPY0Aam524
