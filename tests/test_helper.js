@@ -52,6 +52,12 @@ const initialBlogs = [
     }  
 ]
 
+const getRandomInt = (min, max) => {
+  const minCeiled = Math.ceil(min);
+  const maxFloored = Math.floor(max);
+  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
+}
+
 const nonExistingId = async () => {
   const blog = new Blog({ content: 'willremovethissoon' })
   await blog.save()
@@ -77,6 +83,7 @@ module.exports = {
   nonExistingId,
   blogsInDb,
   usersInDb,
+  getRandomInt
 }
 
 

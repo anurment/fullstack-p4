@@ -9,8 +9,6 @@ const api = supertest(app)
 
 const helper = require('./test_helper')
 
-//...
-
 describe('when there is initially one user at db', () => {
   beforeEach(async () => {
     await User.deleteMany({})
@@ -22,10 +20,10 @@ describe('when there is initially one user at db', () => {
   })
 
   test('creation succeeds with a fresh username', async () => {
-    const usersAtStart = await helper.usersInDb()
+    const randomInt = helper.getRandomInt(1,10**3)
 
     const newUser = {
-      username: 'mluukkai',
+      username: `user ${randomInt}`,
       name: 'Matti Luukkainen',
       password: 'salainen',
     }
@@ -36,11 +34,10 @@ describe('when there is initially one user at db', () => {
       .expect(201)
       .expect('Content-Type', /application\/json/)
 
-    const usersAtEnd = await helper.usersInDb()
-    assert.strictEqual(usersAtEnd.length, usersAtStart.length + 1)
-
-    const usernames = usersAtEnd.map(u => u.username)
-    assert(usernames.includes(newUser.username))
+    const query = User.where({username: newUser.username})
+    const addedUser = await query.findOne()
+    const addedUserUsername = addedUser.username.toString()
+    assert.strictEqual(newUser.username, addedUserUsername)
   })
 
   test('creation fails if name and credentials are not valid', async () => {
@@ -73,19 +70,7 @@ describe('when there is initially one user at db', () => {
         }
       }
     }
-    
-
-  
-
-    
-    
-
-
-
-
-
   })
-
 })
 
 after(async () => {
